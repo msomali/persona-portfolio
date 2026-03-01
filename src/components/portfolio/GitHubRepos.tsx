@@ -4,10 +4,13 @@ import SectionHeading from "./SectionHeading";
 
 const repos = [
   { name: "datastream-engine", desc: "High-throughput distributed data processing engine", lang: "Rust", stars: 1240, forks: 187 },
-  { name: "ml-pipeline-toolkit", desc: "End-to-end ML pipeline framework with AutoML", lang: "Python", stars: 890, forks: 134 },
-  { name: "query-optimizer", desc: "Cost-based query optimizer for graph databases", lang: "Go", stars: 456, forks: 67 },
-  { name: "schema-migrate", desc: "Zero-downtime PostgreSQL migration tool", lang: "Go", stars: 312, forks: 45 },
-  { name: "pydatakit", desc: "Data validation and profiling toolkit", lang: "Python", stars: 567, forks: 89 },
+  { name: "intake-pipeline", desc: "End-to-end ETL pipeline with dlt, dbt, dagster and AWS", lang: "Python", stars: 0, forks: 0 },
+  { name: "epl-standings", desc: "Premier League Standings ETL Pipeline", lang: "Python", stars: 0, forks: 0 },
+  { name: "shimmer_progress_bar", desc: "Customizable animated progress bar widget for Flutter", lang: "Dart", stars: 0, forks: 0 },
+  { name: "azure-devops-workitems-rest-api", desc: "Python script to automate Azure DevOps work item creation using REST API", lang: "Python", stars: 0, forks: 0 },
+  // { name: "query-optimizer", desc: "Cost-based query optimizer for graph databases", lang: "Go", stars: 456, forks: 67 },
+  // { name: "schema-migrate", desc: "Zero-downtime PostgreSQL migration tool", lang: "Go", stars: 312, forks: 45 },
+  // { name: "pydatakit", desc: "Data validation and profiling toolkit", lang: "Python", stars: 567, forks: 89 },
   { name: "react-data-grid", desc: "High-performance virtualized data grid for React", lang: "TypeScript", stars: 234, forks: 38 },
 ];
 

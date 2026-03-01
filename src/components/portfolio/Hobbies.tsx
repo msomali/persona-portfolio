@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Camera, Mountain, Gamepad2, BookOpen, Music, Coffee } from "lucide-react";
+import { Camera, Mountain, Gamepad2, BookOpen, Music, Coffee, Medal, CookingPot } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const hobbies = [
@@ -7,8 +7,8 @@ const hobbies = [
   { icon: Camera, title: "Photography", desc: "Landscape and astrophotography — featured on Unsplash" },
   { icon: Gamepad2, title: "Game Dev", desc: "Building indie games with Godot and Unity on weekends" },
   { icon: BookOpen, title: "Reading", desc: "50+ books/year — sci-fi, systems thinking, philosophy" },
-  { icon: Music, title: "Music Production", desc: "Lo-fi beats and ambient soundscapes in Ableton" },
-  { icon: Coffee, title: "Specialty Coffee", desc: "Home barista — pour-over, espresso, and cold brew" },
+  { icon: Medal, title: "Football Player", desc: "Competitive amateur football player in local leagues" },
+  { icon: CookingPot, title: "Specialty Chef", desc: "Home chef — swahili, african, and indian flavors" },
 ];
 
 export default function Hobbies() {

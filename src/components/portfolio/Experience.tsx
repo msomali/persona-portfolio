@@ -4,9 +4,9 @@ import SectionHeading from "./SectionHeading";
 
 const experiences = [
   {
-    company: "TechCorp",
-    role: "Senior Software Engineer",
-    period: "2022 — Present",
+    company: "Law of Office of Jacob Emrani",
+    role: "Data Engineer",
+    period: "Dec 2025 — Present",
     points: [
       "Architected microservices handling 50M+ daily requests with P99 latency of 45ms using Go and Kubernetes on AWS EKS",
       "Built real-time ML feature store reducing model inference latency by 40% — serving 200+ models with sub-10ms retrieval",
@@ -15,9 +15,9 @@ const experiences = [
     ],
   },
   {
-    company: "DataFlow Inc.",
-    role: "Data Engineer",
-    period: "2020 — 2022",
+    company: "Upendo Kwanza Inc.",
+    role: "Data Analyst",
+    period: "Jan 2025 — Dec 2025",
     points: [
       "Designed data pipelines processing 5M+ records daily using Spark and Airflow with 99.9% SLA uptime",
       "Built real-time analytics dashboard reducing reporting latency from 6 hours to <2 seconds",
@@ -26,9 +26,9 @@ const experiences = [
     ],
   },
   {
-    company: "AI Solutions Lab",
-    role: "Data Scientist",
-    period: "2018 — 2020",
+    company: "Community First Credit Union of Florida",
+    role: "Programmer",
+    period: "Jun 2024 — Oct 2024",
     points: [
       "Developed NLP models achieving 94% accuracy on sentiment analysis, processing 2M customer reviews/day",
       "Built recommendation engine increasing user engagement by 35% and driving $2.4M incremental annual revenue",
@@ -37,9 +37,19 @@ const experiences = [
     ],
   },
   {
-    company: "StartupXYZ",
-    role: "Full Stack Developer",
-    period: "2017 — 2018",
+    company: "University of North Florida",
+    role: "Graduate Research Assistant",
+    period: "Aug 2023 — Dec 2024",
+    points: [
+      "Assisted in teaching Data Structures and Algorithms course to 150+ students, leading weekly recitations and office hours",
+      "Developed automated grading scripts using Python, reducing grading time by 80% and providing instant feedback to students",
+      "Received positive feedback from 95% of students for clarity and helpfulness in course evaluations",
+    ],
+  },
+  {
+    company: "Supernova Hub",
+    role: "Software Engineer",
+    period: "Jul 2022 — Apr 2024",
     points: [
       "Built MVP from scratch serving 10K+ users with sub-200ms API response times using React, Node.js, and PostgreSQL",
       "Implemented CI/CD pipelines reducing deployment time from 4 hours to 8 minutes with zero-downtime deployments",
@@ -62,11 +72,10 @@ export default function Experience() {
             <button
               key={e.company}
               onClick={() => setActive(i)}
-              className={`px-5 py-3 text-sm font-mono text-left whitespace-nowrap transition-all border-b-2 md:border-b-0 md:border-l-2 -mb-px md:mb-0 md:-ml-px ${
-                active === i
-                  ? "text-primary border-primary bg-primary/5"
-                  : "text-muted-foreground border-transparent hover:text-foreground hover:bg-secondary/50"
-              }`}
+              className={`px-5 py-3 text-sm font-mono text-left whitespace-nowrap transition-all border-b-2 md:border-b-0 md:border-l-2 -mb-px md:mb-0 md:-ml-px ${active === i
+                ? "text-primary border-primary bg-primary/5"
+                : "text-muted-foreground border-transparent hover:text-foreground hover:bg-secondary/50"
+                }`}
             >
               {e.company}
             </button>

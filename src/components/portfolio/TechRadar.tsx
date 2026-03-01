@@ -4,27 +4,27 @@ import SectionHeading from "./SectionHeading";
 const categories = [
   {
     title: "Languages",
-    skills: ["Python", "TypeScript", "Go", "Rust", "SQL"],
+    skills: ["Python", "TypeScript", "JavaScript", "Dart", "SQL", "C#", "Bash"],
   },
   {
     title: "Backend",
-    skills: ["Node.js", "FastAPI", "Django", "gRPC", "GraphQL"],
+    skills: ["Node.js", "Next.js", "FastAPI", "Django", "gRPC", "GraphQL", "PHP", ".NET"],
   },
   {
     title: "Data Engineering",
-    skills: ["Apache Spark", "Airflow", "dbt", "Kafka", "Flink"],
+    skills: ["Spark", "Airflow", "dbt", "Kafka", "dlt", "Dagster", "Data Modeling", "ETL/ELT"],
   },
   {
     title: "Machine Learning",
-    skills: ["scikit-learn", "XGBoost", "PyTorch", "TensorFlow", "MLflow"],
+    skills: ["scikit-learn", "XGBoost", "PyTorch", "TensorFlow", "MLflow", "Deep Learning", "NLP", "Computer Vision", "Agentic AI", "Generative AI"],
   },
   {
     title: "Databases",
-    skills: ["PostgreSQL", "Redis", "MongoDB", "ClickHouse", "Redshift"],
+    skills: ["PostgreSQL", "Redis", "MongoDB", "MySQL", "MSSQL", "Redshift", "RDS", "DynamoDB", "Snowflake", "DuckDB"],
   },
   {
     title: "Cloud & DevOps",
-    skills: ["AWS", "Docker", "Kubernetes", "Terraform", "CI/CD"],
+    skills: ["AWS", "Docker", "Terraform", "CI/CD", "GitHub Actions", "Azure", "GCP", "Azure DevOps", "Oracle Cloud"],
   },
 ];
 
