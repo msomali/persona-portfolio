@@ -4,14 +4,15 @@ import SectionHeading from "./SectionHeading";
 
 const experiences = [
   {
-    company: "Law of Office of Jacob Emrani",
-    role: "Data Engineer",
+    company: "CSI Professionals Inc.",
+    role: "Data Analyst",
     period: "Dec 2025 — Present",
     points: [
-      "Architected microservices handling 50M+ daily requests with P99 latency of 45ms using Go and Kubernetes on AWS EKS",
-      "Built real-time ML feature store reducing model inference latency by 40% — serving 200+ models with sub-10ms retrieval",
-      "Led migration from monolith to event-driven architecture using Kafka, reducing deployment time by 75% and cutting infrastructure costs by 35%",
-      "Mentored team of 5 engineers; 3 promoted to senior roles within 18 months",
+      "Built end-to-end data pipelines using PySpark, Airflow/Dagster, dbt, and Kafka to process 15K+ daily records across two CRM systems, achieving 99.5% data consistency and integrating 5+ external APIs via FastAPI for real-time data synchronization",
+      "Architected a medallion lakehouse on AWS S3 and RDS that unified legal operations data, enabling speed-to-lead analytics and call center performance tracking that improved operational efficiency by 40% and eliminated manual reporting bottlenecks across the organization",
+      "Deployed production AI systems including GenAI-powered case summarization that cut attorney research time by 60%, an AI agent layer handling 500+ concurrent client inquiries, and a computer vision model at 92% accuracy automating case intake and severity assessment decisions",
+      "Built predictive ML models for marketing optimization, reducing client acquisition costs by 35% and improving lead conversion by 28% through data-driven audience segmentation",
+      "Delivered real-time Power BI and Streamlit dashboards to legal and operations leadership, translating complex pipeline outputs into actionable business metrics for non-technical stakeholders",
     ],
   },
   {
@@ -19,10 +20,10 @@ const experiences = [
     role: "Data Analyst",
     period: "Jan 2025 — Dec 2025",
     points: [
-      "Designed data pipelines processing 5M+ records daily using Spark and Airflow with 99.9% SLA uptime",
-      "Built real-time analytics dashboard reducing reporting latency from 6 hours to <2 seconds",
-      "Implemented data quality framework catching 95% of anomalies before downstream impact — saving 200+ engineering hours/quarter",
-      "Optimized Redshift queries and cluster configuration, resulting in $120K annual cost savings (40% reduction)",
+      "Engineered automated ETL pipelines in Python and SQL processing 10K+ student records across three programs, eliminating 35 hours per month of manual reporting and improving data accuracy by 40%",
+      "Built a Next.js and FastAPI analytics portal delivering real-time engagement metrics to 200+ staff members, enabling program teams to identify at-risk students 50% faster than before",
+      "Optimized data transformation workflows reducing dashboard refresh cycles from 4 hours to 45 minutes, an 81% improvement and established data quality checks catching 95% of anomalies before they reached reporting",
+      "Developed Power BI dashboards tracking 15+ KPIs across student engagement, program performance, and outcome metrics, giving leadership the visibility to make faster, evidence-based program decisions",
     ],
   },
   {
@@ -30,10 +31,10 @@ const experiences = [
     role: "Programmer",
     period: "Jun 2024 — Oct 2024",
     points: [
-      "Developed NLP models achieving 94% accuracy on sentiment analysis, processing 2M customer reviews/day",
-      "Built recommendation engine increasing user engagement by 35% and driving $2.4M incremental annual revenue",
-      "Created automated fraud detection pipeline processing 10M+ transactions daily with 0.02% false positive rate",
-      "Published research on transfer learning for low-resource NLP at EMNLP workshop (cited 45+ times)",
+      "Automated 12 recurring SQL reports using Python, eliminating 25 hours per week of manual data extraction and freeing the analyst team to focus on higher-value work",
+      "Developed data validation scripts that detected $150K+ in potential processing errors within the first four months a direct financial risk mitigation contribution",
+      "Built .NET applications processing 5K+ daily loan transactions at 99.8% accuracy, improving loan approval speed by 30% and streamlining critical financial workflows across the credit union",
+      "Deployed Power Automate workflows that reduced operational overhead by 40% across three business units, improving process efficiency and enabling staff to redirect time toward member services",
     ],
   },
   {
@@ -41,9 +42,10 @@ const experiences = [
     role: "Graduate Research Assistant",
     period: "Aug 2023 — Dec 2024",
     points: [
-      "Assisted in teaching Data Structures and Algorithms course to 150+ students, leading weekly recitations and office hours",
-      "Developed automated grading scripts using Python, reducing grading time by 80% and providing instant feedback to students",
-      "Received positive feedback from 95% of students for clarity and helpfulness in course evaluations",
+      "Designed PySpark and Airflow ETL pipelines that ingested 250+ GB of cross-institutional traffic data from 5 sites, reducing processing time by 60% and supporting a PostgreSQL data warehouse handling 50+ concurrent analytical queries",
+      "Developed YOLO-based computer vision models to process 100K+ traffic images, generating vehicle classification and movement insights that directly informed urban planning decisions for city stakeholders",
+      "Built an automated ML evaluation framework that reduced model experiment cycles from 8 hours to 90 minutes, significantly accelerating research iteration velocity across the team",
+      "Architected normalized data schemas and automated reporting pipelines that made analytical outputs reproducible and shareable across partner institutions a key requirement for federally-adjacent research work",
     ],
   },
   {
@@ -51,9 +53,11 @@ const experiences = [
     role: "Software Engineer",
     period: "Jul 2022 — Apr 2024",
     points: [
-      "Built MVP from scratch serving 10K+ users with sub-200ms API response times using React, Node.js, and PostgreSQL",
-      "Implemented CI/CD pipelines reducing deployment time from 4 hours to 8 minutes with zero-downtime deployments",
-      "Developed RESTful APIs and GraphQL endpoints handling 500K+ requests/day for mobile and web clients",
+      "Delivered Flutter mobile applications to 100K+ users across iOS and Android, implementing modular architecture patterns that improved app performance by 20% and made the codebase significantly easier to maintain and extend",
+      "Integrated real-time analytics dashboards and AI-driven features into production apps, boosting operational efficiency by 20% and giving product teams the data visibility needed to make informed roadmap decisions",
+      "Architected Azure DevOps CI/CD pipelines using Docker and Fastlane, cutting release cycles by 30% and establishing automated deployment workflows that enabled continuous delivery across multiple concurrent product lines",
+      "Led the frontend engineering team through structured code reviews and pair programming, raising code quality standards and reducing bug rates across multiple product releases",
+      "Collaborated asynchronously across time zones with European clients and cross-functional teams building the remote communication and documentation discipline that carries into every role since",
     ],
   },
 ];
