@@ -1,10 +1,9 @@
-import { Github, Linkedin, Twitter, Youtube, BookOpen } from "lucide-react";
+import { Github, Linkedin, Twitter, BookOpen } from "lucide-react";
 
 const socials = [
   { icon: Github, href: "https://github.com/msomali" },
   { icon: Linkedin, href: "https://linkedin.com/in/walidaak" },
   { icon: Twitter, href: "https://x.com/waka_walid" },
-  { icon: Youtube, href: "https://youtube.com/@walidkambagha" },
   { icon: BookOpen, href: "https://medium.com/@msomali" },
 ];
 

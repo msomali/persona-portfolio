@@ -10,8 +10,8 @@ export default function CaseStudies() {
       <SectionHeading number="04" title="Case Studies" />
 
       <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl -mt-6 mb-10">
-        Systems where the code isn't public, so the reasoning has to stand on its own — what the constraint was,
-        what I chose, and what I gave up to get it.
+        The systems worth explaining rather than listing. Same work as the platform entries above, taken apart:
+        what the constraint was, which option I rejected, and what I gave up to get the one I shipped.
       </p>
 
       <div className="grid md:grid-cols-2 gap-5">

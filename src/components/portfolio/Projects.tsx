@@ -1,6 +1,7 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Target, Layers, Wrench, BarChart3, Rocket, TrendingUp } from "lucide-react";
+import { ExternalLink, Github, Target, Layers, Wrench, BarChart3, Rocket, TrendingUp, ArrowRight } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 // Derived from the projects themselves so a tab can never render empty.
@@ -17,6 +18,8 @@ interface Project {
   deployment: string;
   github?: string;
   live?: string;
+  /** When set, the card renders condensed and points at the full case study. */
+  caseStudySlug?: string;
 }
 
 const projects: Project[] = [
@@ -98,6 +101,45 @@ const projects: Project[] = [
     scale:
       "An independent build from 2022 — roughly 19K LOC across the Django backend and Flutter client. Side-project scale, not platform scale, and included here for the through-line rather than the size: legal information access in Dar es Salaam, four years before building legal AI in Los Angeles.",
     deployment: "Django backend with a media library of constitutional documents, gazettes and audio; Flutter client targeting Android and iOS.",
+  },
+  {
+    title: "LOJE Intake Data Platform",
+    category: "Data Engineering",
+    problem:
+      "The firm's intake reporting ran as 2,000 lines of pandas on a single Windows laptop under Task Scheduler. Rebuilt as an incremental ELT platform across three call and lead sources, with freshness gates so a stale report can never be mistaken for a current one.",
+    architecture:
+      "dlt ingestion on 30-minute schedules into a medallion lakehouse across four Postgres schemas, dbt transforms, Dagster orchestration with dependency-aware sensors, and a Streamlit dashboard alongside the generated Excel report.",
+    decisions: [],
+    tech: ["Python", "dlt", "dbt", "Dagster", "PostgreSQL", "Terraform", "AWS ECS Fargate", "Streamlit", "GitHub Actions"],
+    scale: "596 commits between February and August 2026. Three sources, four report windows a day, SNS alerting on any failure.",
+    deployment: "AWS ECS Fargate via GitHub Actions, infrastructure managed with Terraform.",
+    caseStudySlug: "intake-pipeline-rebuild",
+  },
+  {
+    title: "Case Summary AI",
+    category: "AI Systems",
+    problem:
+      "Reloading an entire case file into your head is the largest recurring cost in legal case work. This turns it into a structured six-section brief plus case-scoped Q&A that refuses to answer outside its retrieved context — against live client data, in a regulated practice.",
+    architecture:
+      "An LLM-free sync path extracting document text, embeddings in pgvector inside the existing Postgres, tiered model selection per workload, deterministic milestone summaries anchored to case creation date, and authorization proxied off the source system's live access matrix.",
+    decisions: [],
+    tech: ["Python", "FastAPI", "SQLAlchemy 2.0", "PostgreSQL", "pgvector", "OpenAI", "MSAL / MS Graph", "APScheduler"],
+    scale: "41K LOC across 25 tables and 133 commits. Cost per brief, per chat turn and per milestone cycle observable in the audit rollup.",
+    deployment: "FastAPI with APScheduler for milestone checks, Microsoft Graph magic-link auth, GitHub Actions deploy.",
+    caseStudySlug: "rag-in-a-regulated-workflow",
+  },
+  {
+    title: "LOJE Hub",
+    category: "Platform Engineering",
+    problem:
+      "Internal staff portal that doubles as the authorization authority for every sibling tool — announcements, directory and calendar on one side, and on the other the single service that answers who may use which app, at what level, with which roles.",
+    architecture:
+      "Server-rendered FastAPI and Jinja2 with Microsoft Entra OIDC sign-in, exposing three authorization endpoints consumed by sibling tools through a shared SDK. Role slugs are stable and labels are display-only, so renames need no consumer deploy.",
+    decisions: [],
+    tech: ["Python", "FastAPI", "SQLAlchemy 2.x", "PostgreSQL", "Alembic", "Microsoft Entra / OIDC", "Terraform", "Docker"],
+    scale: "26K LOC over 358 commits with 164 test files. CI runs every migration up and back down against real Postgres.",
+    deployment: "Docker with locked dependencies — CI installs from the lockfile, so the image that ships is the one that was tested.",
+    caseStudySlug: "central-authorization-service",
   },
 ];
 
@@ -202,8 +244,20 @@ export default function Projects() {
                 })}
               </div>
 
+              {p.caseStudySlug && (
+                <div className="px-6 md:px-8 pb-6">
+                  <Link
+                    to={`/case-studies/${p.caseStudySlug}`}
+                    className="group/cs inline-flex items-center gap-1.5 font-mono text-xs text-primary hover:underline underline-offset-4"
+                  >
+                    Read the full case study — decisions, tradeoffs, and what I'd change
+                    <ArrowRight size={13} className="group-hover/cs:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              )}
+
               {/* Key decisions */}
-              <div className="px-6 md:px-8 pb-6">
+              <div className={`px-6 md:px-8 pb-6 ${p.decisions.length ? "" : "hidden"}`}>
                 <div className="flex items-center gap-2 mb-3">
                   <TrendingUp size={14} className="text-primary" />
                   <span className="text-xs font-mono text-primary uppercase tracking-wider">Decisions That Mattered</span>

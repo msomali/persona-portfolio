@@ -43,38 +43,6 @@ const posts = [
     url: "https://medium.com/@msomali/creating-azure-devops-work-items-using-the-rest-api-a-quick-guide-9c8b9aa47228",
     tags: ["Azure DevOps", "Work Item", "DevOps Training", "Agile Methodology", "Rest API"],
   }
-  // {
-  //   title: "Designing Scalable ETL Systems: Lessons from Processing 5M Events/sec",
-  //   excerpt: "A deep dive into partitioning strategies, backpressure mechanisms, and exactly-once semantics in distributed data pipelines.",
-  //   date: "Dec 2024",
-  //   readTime: "14 min read",
-  //   url: "https://medium.com",
-  //   tags: ["Data Engineering", "Architecture"],
-  // },
-  // {
-  //   title: "Serving ML Models in Production: Beyond the Jupyter Notebook",
-  //   excerpt: "From model registry to canary deployments — the operational patterns that make ML systems reliable at scale.",
-  //   date: "Oct 2024",
-  //   readTime: "11 min read",
-  //   url: "https://medium.com",
-  //   tags: ["MLOps", "Production"],
-  // },
-  // {
-  //   title: "Data Modeling Tradeoffs: Star Schema vs. Wide Tables in Analytics",
-  //   excerpt: "When to normalize, when to denormalize, and how your query patterns should drive schema decisions.",
-  //   date: "Aug 2024",
-  //   readTime: "9 min read",
-  //   url: "https://medium.com",
-  //   tags: ["SQL", "Data Modeling"],
-  // },
-  // {
-  //   title: "Cloud Cost Optimization: How We Cut Our AWS Bill by 40%",
-  //   excerpt: "Right-sizing instances, spot strategies, and architectural changes that saved $120K/year without sacrificing performance.",
-  //   date: "Jun 2024",
-  //   readTime: "8 min read",
-  //   url: "https://medium.com",
-  //   tags: ["AWS", "Cost Optimization"],
-  // },
 ];
 
 export default function BlogPosts() {
