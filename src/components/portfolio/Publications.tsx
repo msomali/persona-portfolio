@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FileText, ExternalLink, GraduationCap } from "lucide-react";
+import { FileText, ExternalLink, GraduationCap, Award, School } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const works = [
@@ -34,10 +34,32 @@ const works = [
   },
 ];
 
+const education = [
+  {
+    degree: "M.Sc. Computing & Information Sciences (Data Science)",
+    school: "University of North Florida",
+    period: "Aug 2023 — Dec 2024",
+    note: "4.0 GPA",
+  },
+  {
+    degree: "B.Sc. Computer Science",
+    school: "The Institute of Finance Management",
+    period: "Oct 2012 — Nov 2015",
+    note: "Dar es Salaam, Tanzania",
+  },
+];
+
+const certifications = [
+  "Oracle 2025 Certified Foundations Associate — Cloud Infrastructure",
+  "Oracle 2025 Certified Foundations Associate — Data Platform",
+  "Oracle 2025 Certified Foundations Associate — Cloud Infrastructure AI",
+  "AWS Educate — Machine Learning Foundations",
+];
+
 export default function Publications() {
   return (
     <section id="research" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="07" title="Research & Publications" />
+      <SectionHeading number="05" title="Research & Credentials" />
 
       <div className="space-y-5">
         {works.map((w, i) => (
@@ -91,6 +113,52 @@ export default function Publications() {
             </div>
           </motion.article>
         ))}
+      </div>
+
+      <div className="grid md:grid-cols-2 gap-5 mt-5">
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="bg-card border border-border rounded-xl p-6 md:p-7"
+        >
+          <div className="flex items-center gap-2.5 mb-5">
+            <School className="text-primary" size={18} />
+            <h3 className="font-mono text-xs uppercase tracking-wider text-primary">Education</h3>
+          </div>
+          <div className="space-y-5">
+            {education.map((e) => (
+              <div key={e.degree}>
+                <p className="text-sm font-semibold text-foreground leading-snug">{e.degree}</p>
+                <p className="text-sm text-muted-foreground mt-1">{e.school}</p>
+                <p className="font-mono text-xs text-muted-foreground/70 mt-1">
+                  {e.period} · <span className="text-primary/80">{e.note}</span>
+                </p>
+              </div>
+            ))}
+          </div>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 24 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.08 }}
+          className="bg-card border border-border rounded-xl p-6 md:p-7"
+        >
+          <div className="flex items-center gap-2.5 mb-5">
+            <Award className="text-primary" size={18} />
+            <h3 className="font-mono text-xs uppercase tracking-wider text-primary">Certifications</h3>
+          </div>
+          <ul className="space-y-2.5">
+            {certifications.map((c) => (
+              <li key={c} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
+                <span className="text-primary mt-1.5 shrink-0">▹</span>
+                {c}
+              </li>
+            ))}
+          </ul>
+        </motion.div>
       </div>
     </section>
   );

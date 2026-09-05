@@ -4,12 +4,11 @@ import { Menu, X } from "lucide-react";
 
 const links = [
   { label: "About", href: "#about" },
-  { label: "Systems", href: "#systems" },
-  { label: "Tech", href: "#tech" },
   { label: "Experience", href: "#experience" },
   { label: "Projects", href: "#projects" },
   { label: "Case Studies", href: "#case-studies" },
   { label: "Research", href: "#research" },
+  { label: "Stack", href: "#tech" },
   { label: "Blog", href: "#blog" },
   { label: "Contact", href: "#contact" },
 ];

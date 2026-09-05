@@ -59,7 +59,7 @@ export default function Projects() {
 
   return (
     <section id="projects" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="05" title="Things I've Built" />
+      <SectionHeading number="03" title="Things I've Built" />
 
       {/* Filter tabs */}
       <div className={`flex-wrap gap-2 mb-12 ${projects.length > 2 ? "flex" : "hidden"}`}>

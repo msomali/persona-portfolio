@@ -32,14 +32,14 @@ const Index = () => {
       <main>
         <Hero />
         <About />
-        <SystemsProcess />
-        <TechRadar />
         <Experience />
         <Projects />
         <CaseStudies />
         <Publications />
+        <TechRadar />
         <BlogPosts />
         <GitHubRepos />
+        <SystemsProcess />
         <Hobbies />
         <Exploring />
         <Contact />

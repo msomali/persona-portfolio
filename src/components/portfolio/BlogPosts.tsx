@@ -80,7 +80,7 @@ const posts = [
 export default function BlogPosts() {
   return (
     <section id="blog" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="08" title="Technical Deep Dives" />
+      <SectionHeading number="07" title="Technical Deep Dives" />
 
       <div className="grid md:grid-cols-2 gap-5">
         {posts.map((post, i) => (

@@ -7,7 +7,7 @@ import { caseStudies } from "@/data/caseStudies";
 export default function CaseStudies() {
   return (
     <section id="case-studies" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="06" title="Case Studies" />
+      <SectionHeading number="04" title="Case Studies" />
 
       <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl -mt-6 mb-10">
         Systems where the code isn't public, so the reasoning has to stand on its own — what the constraint was,

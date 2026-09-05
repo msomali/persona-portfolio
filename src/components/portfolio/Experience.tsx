@@ -156,7 +156,7 @@ export default function Experience() {
 
   return (
     <section id="experience" className="section-padding max-w-4xl mx-auto">
-      <SectionHeading number="04" title="Where I've Worked" />
+      <SectionHeading number="02" title="Where I've Worked" />
 
       <div className="flex flex-col md:flex-row gap-0 md:gap-8">
         {/* Tabs */}

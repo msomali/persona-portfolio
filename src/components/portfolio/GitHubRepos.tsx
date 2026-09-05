@@ -18,7 +18,7 @@ const langColors: Record<string, string> = {
 export default function GitHubRepos() {
   return (
     <section id="github" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="09" title="Open Source" />
+      <SectionHeading number="08" title="Open Source" />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {repos.map((r, i) => (
