@@ -21,33 +21,21 @@ export default function About() {
         className="space-y-4 text-muted-foreground leading-relaxed flex-1 min-w-0"
       >
         <p>
-          I'm a Senior Data &amp; AI Engineer in Los Angeles. I've been the{" "}
-          <span className="text-foreground font-medium">first dedicated data hire at two organizations</span> — a
-          nonprofit and a personal injury law firm — which means I've twice started with an empty cloud account and
-          ended with a platform the business actually runs on: ingestion, orchestration, a lakehouse, and the AI and
-          BI products sitting on top of it.
+          I'm a Senior Data &amp; AI Engineer in Los Angeles, and I've been the{" "}
+          <span className="text-foreground font-medium">first data hire at two organizations</span> — twice starting
+          with an empty cloud account and ending with a platform the business runs on.
         </p>
         <p>
-          I didn't start in data. I spent most of a decade as a software engineer in{" "}
+          Before data, most of a decade as a software engineer in{" "}
           <span className="text-foreground font-medium">Dar es Salaam</span> and{" "}
-          <span className="text-foreground font-medium">Milan</span> — building the backend for a national
-          socio-economic databank serving 5M+ citizens, moving government platforms off monoliths onto Kubernetes,
-          running ETL over a million records a day at 99.9% uptime, then leading frontend on Flutter apps that
-          reached 100K+ users. That decade is where I learned the hard part is rarely the model or the query. It's
-          the delivery, and it's whether anyone can trust the number at the end.
+          <span className="text-foreground font-medium">Milan</span>: the backend for a national databank serving
+          5M+ citizens, government platforms moved onto Kubernetes, a million records a day at 99.9% uptime. Then a
+          master's at UNF and a deliberate move into data.
         </p>
         <p>
-          Moving into data was deliberate, not accidental. I took a master's at the{" "}
-          <span className="text-foreground font-medium">University of North Florida</span>, built PySpark and
-          Airflow pipelines over 250&nbsp;GB of FDOT traffic footage, and wrote a thesis comparing YOLOv8, v9, and
-          v10 for urban traffic detection — then went straight into being the person who builds the platform rather
-          than the person who asks for one.
-        </p>
-        <p>
-          That mix is the point. I can write the ingestion, model the warehouse, train the model, build the API,
-          ship the dashboard, and then explain to a non-technical stakeholder why the number changed. Most of my
-          work now lives where data engineering meets applied AI — document intelligence, agent systems, and the
-          unglamorous data quality work that decides whether anyone trusts the output at all.
+          I can write the ingestion, model the warehouse, train the model, ship the dashboard, and explain to a
+          non-technical stakeholder why the number changed. The work I care about is the unglamorous part — whether
+          anyone can trust the output.
         </p>
       </motion.div>
 

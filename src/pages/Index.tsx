@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import Navbar from "@/components/portfolio/Navbar";
 import Hero from "@/components/portfolio/Hero";
 import About from "@/components/portfolio/About";
-import SystemsProcess from "@/components/portfolio/SystemsProcess";
 import TechRadar from "@/components/portfolio/TechRadar";
 import Experience from "@/components/portfolio/Experience";
 import Projects from "@/components/portfolio/Projects";
@@ -11,8 +10,7 @@ import CaseStudies from "@/components/portfolio/CaseStudies";
 import Publications from "@/components/portfolio/Publications";
 import BlogPosts from "@/components/portfolio/BlogPosts";
 import GitHubRepos from "@/components/portfolio/GitHubRepos";
-import Hobbies from "@/components/portfolio/Hobbies";
-import Exploring from "@/components/portfolio/Exploring";
+import Beyond from "@/components/portfolio/Beyond";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
 
@@ -39,9 +37,7 @@ const Index = () => {
         <TechRadar />
         <BlogPosts />
         <GitHubRepos />
-        <SystemsProcess />
-        <Hobbies />
-        <Exploring />
+        <Beyond />
         <Contact />
       </main>
       <Footer />

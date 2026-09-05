@@ -19,7 +19,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Rebuilding a Fragile Pipeline Without Breaking the Report It Produced",
     context: "Law Offices of Jacob Emrani · 2026 · 596 commits",
     summary:
-      "The intake reporting pipeline worked. That was the problem — it worked well enough that the whole intake team had come to depend on it, while running as 2,000 lines of pandas across five modules on a single Windows laptop under Task Scheduler, with a hardcoded OneDrive path. It wasn't broken. It was fragile in ways that only surfaced under pressure.",
+      "It worked. That was the problem — well enough that the whole intake team depended on it, while running as 2,000 lines of pandas on a single Windows laptop under Task Scheduler. Not broken. Fragile in ways that only surfaced under pressure.",
     decisions: [
       "Diagnosed the real failure mode before touching anything: a CallRail timeout at 2 AM produced an 8 AM report built on stale data, silently. There was no alerting, no run history, and no way to know the pipeline had run except remoting into the machine and reading a log file.",
       "Replaced the layers one at a time rather than rewriting — dlt for ingestion (~800 lines of pagination, retry, upsert and cursor logic down to ~140 per source), dbt for the ~500 lines of business logic trapped in a single pandas file, Dagster for scheduling that understands dependencies.",
@@ -44,7 +44,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Shipping RAG Into a Regulated Workflow — the Demo Was the Easy Part",
     context: "Law Offices of Jacob Emrani · 2026 · 41K LOC, 25 tables",
     summary:
-      "Before any meaningful action on a case file, somebody has to reload the entire matter into their head — notes, emails, tasks, contacts, medical records. At a real caseload that re-ingestion is the single largest consumer of professional time, and it isn't analysis. It's re-absorbing information that was already written down once. The ask was a one-glance brief that a regulated practice would trust against live client data.",
+      "Before acting on a case file, someone has to reload the whole matter into their head. At a real caseload that re-ingestion is the largest consumer of professional time — and it isn't analysis, it's re-reading what was already written down. The ask was a brief a regulated practice would trust against live client data.",
     decisions: [
       "Kept the sync path completely LLM-free. Document text is extracted with pdfplumber and format-specific parsers, so syncing a thousand matters costs nothing in inference — the model is only invoked where a model is actually required.",
       "Chose pgvector inside the existing Postgres over a dedicated vector database. One system to operate, no incremental SaaS cost, and the migration path to a purpose-built ANN index stays open if scale ever demands it. The decision was made reversible on purpose.",
@@ -66,7 +66,7 @@ export const caseStudies: CaseStudy[] = [
     title: "One Authorization Authority Instead of Six Permission Models",
     context: "Law Offices of Jacob Emrani · 2026 · 358 commits",
     summary:
-      "The firm's internal tooling grew into a suite — an intake pipeline, a case summariser, a document sorter, a redactor. Each one needed to know who could use it and at what level. The default path is for every tool to grow its own permissions table, and then for six of them to drift apart until nobody can answer who has access to what.",
+      "The firm's internal tooling grew into a suite, and each tool needed to know who could use it and at what level. The default path is every tool growing its own permissions table — then six of them drifting apart until nobody can answer who has access to what.",
     decisions: [
       "Made the staff portal the single authorization authority rather than letting each tool own its own model. Sibling tools call three endpoints through a shared SDK — resolve a subject's effective level and roles, list granted members, fetch the role catalogue — so access is answered in one place, by one system, for all of them.",
       "Split role identity from role display. The catalogue returns a stable slug alongside a human label, so leadership can rename a role in the UI and no consumer needs a deploy. Renames are a routine request; coupling them to a release train is how a permissions system becomes something people route around.",
@@ -88,7 +88,7 @@ export const caseStudies: CaseStudy[] = [
     title: "Which YOLO for Real Traffic? Three Models, Three Experiments, No Single Winner",
     context: "M.Sc. thesis · University of North Florida · 2024",
     summary:
-      "Off-the-shelf YOLO benchmarks are run on clean, balanced datasets. Urban traffic footage is neither — it has dense vehicle classes, wildly varying light, and weather that degrades exactly when detection matters most. The question wasn't which model scores highest on paper, but which one a city should actually deploy.",
+      "YOLO benchmarks run on clean, balanced datasets. Urban traffic footage is neither — dense vehicle classes, varying light, and weather that degrades exactly when detection matters most. The question wasn't which model scores highest, but which one a city should deploy.",
     decisions: [
       "Built the dataset from real FDOT traffic CCTV across six I-295 corridor locations in Jacksonville rather than a public benchmark, so the failure modes under test were the ones a deployment would actually hit.",
       "Escalated the difficulty in three deliberate stages — baseline, then spatial and structural augmentation, then combined environmental variability — so a model's degradation curve was visible rather than a single aggregate score.",
