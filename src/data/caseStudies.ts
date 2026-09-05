@@ -62,6 +62,28 @@ export const caseStudies: CaseStudy[] = [
     stack: ["Python", "FastAPI", "SQLAlchemy 2.0", "PostgreSQL", "pgvector", "OpenAI", "MSAL / MS Graph", "APScheduler", "Pytest"],
   },
   {
+    slug: "central-authorization-service",
+    title: "One Authorization Authority Instead of Six Permission Models",
+    context: "Law Offices of Jacob Emrani · 2026 · 358 commits",
+    summary:
+      "The firm's internal tooling grew into a suite — an intake pipeline, a case summariser, a document sorter, a redactor. Each one needed to know who could use it and at what level. The default path is for every tool to grow its own permissions table, and then for six of them to drift apart until nobody can answer who has access to what.",
+    decisions: [
+      "Made the staff portal the single authorization authority rather than letting each tool own its own model. Sibling tools call three endpoints through a shared SDK — resolve a subject's effective level and roles, list granted members, fetch the role catalogue — so access is answered in one place, by one system, for all of them.",
+      "Split role identity from role display. The catalogue returns a stable slug alongside a human label, so leadership can rename a role in the UI and no consumer needs a deploy. Renames are a routine request; coupling them to a release train is how a permissions system becomes something people route around.",
+      "Kept portal-local roles deliberately orthogonal to per-app access. Being an admin of the staff portal grants nothing in the case summariser — the two axes never leak into each other, so the convenient shortcut cannot quietly become a privilege escalation.",
+      "Sign-in is Microsoft Entra OIDC against the tenant the firm already runs. No new identity provider, no new password store, no separate offboarding step — someone removed from the tenant loses every tool at once.",
+      "The local development bypass physically refuses to start when the base URL is HTTPS. A dev convenience that can be reached in production is a backdoor, so the interlock is in the code rather than in a deployment checklist.",
+      "Server-rendered FastAPI and Jinja2 with page-scoped CSS and vanilla JS. An internal portal does not need a SPA build pipeline, and the team that inherits it should not need to know one.",
+    ],
+    tradeoffs:
+      "Centralizing authorization creates a dependency every tool shares — if the hub is down, its siblings cannot resolve access. Accepted because the alternative failure is worse and silent: six permission models drifting apart until an offboarded employee still has access somewhere nobody thought to check.",
+    outcome:
+      "26K lines of Python over 358 commits, with 164 test files. The suite runs on in-memory SQLite and has to pass with Postgres stopped, while CI separately runs every migration up and back down against real Postgres — because a green unit suite says nothing about whether a migration is reversible. Dependencies are locked and CI installs from the lockfile, so the image that ships is the one that was tested.",
+    lesson:
+      "The interesting decision in an internal platform is rarely a feature. It is where you put the boundary — and whether a rename, an offboarding, or a careless deploy can cross it.",
+    stack: ["Python", "FastAPI", "SQLAlchemy 2.x", "PostgreSQL", "Alembic", "Microsoft Entra / OIDC", "Jinja2", "Terraform", "Docker"],
+  },
+  {
     slug: "yolo-traffic-comparison",
     title: "Which YOLO for Real Traffic? Three Models, Three Experiments, No Single Winner",
     context: "M.Sc. thesis · University of North Florida · 2024",

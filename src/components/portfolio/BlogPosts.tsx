@@ -5,7 +5,7 @@ import SectionHeading from "./SectionHeading";
 const posts = [
   {
     title: "Migrating a Manual Python Pipeline to dbt + Dagster Without Breaking Reports",
-    excerpt: "2,000 lines of pandas on a single Windows laptop, replaced layer by layer \u2014 while the reports it produced stayed byte-for-byte identical.",
+    excerpt: "2,000 lines of pandas on a single Windows laptop, replaced layer by layer — while the reports it produced stayed byte-for-byte identical.",
     date: "Mar 2026",
     readTime: "11 min read",
     url: "https://medium.com/@msomali/migrating-a-manual-python-pipeline-to-dbt-dagster-without-breaking-reports-8ec9ca5be0d8",
@@ -21,7 +21,7 @@ const posts = [
   },
   {
     title: "Building Your First ETL Pipeline: A Beginner’s Guide to Extracting, Transforming, and Loading Real-World Data",
-    excerpt: "Extract, transform, load \u2014 built from scratch against a live API, with the schema decisions and the beginner mistakes left in.",
+    excerpt: "Extract, transform, load — built from scratch against a live API, with the schema decisions and the beginner mistakes left in.",
     date: "Nov 2025",
     readTime: "7 min read",
     url: "https://medium.com/@msomali/building-your-first-etl-pipeline-a-beginners-guide-to-extracting-transforming-and-loading-a49bb19a0058",
