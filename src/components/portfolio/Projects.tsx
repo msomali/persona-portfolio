@@ -3,7 +3,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Target, Layers, Wrench, BarChart3, Rocket, TrendingUp } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
-const categories = ["All", "AI Systems", "Platform Engineering", "Data Engineering"] as const;
+// Derived from the projects themselves so a tab can never render empty.
+const categoryOrder = ["AI Systems", "Data Engineering", "Platform Engineering"];
 
 interface Project {
   title: string;
@@ -111,6 +112,12 @@ const sectionIcons = {
 export default function Projects() {
   const [filter, setFilter] = useState<string>("All");
 
+  const categories = [
+    "All",
+    ...categoryOrder.filter((c) => projects.some((p) => p.category === c)),
+    ...[...new Set(projects.map((p) => p.category))].filter((c) => !categoryOrder.includes(c)),
+  ];
+
   const filtered = filter === "All" ? projects : projects.filter(p => p.category === filter);
 
   return (
@@ -118,7 +125,7 @@ export default function Projects() {
       <SectionHeading number="03" title="Things I've Built" />
 
       {/* Filter tabs */}
-      <div className={`flex-wrap gap-2 mb-12 ${projects.length > 2 ? "flex" : "hidden"}`}>
+      <div className={`flex-wrap gap-2 mb-12 ${categories.length > 2 ? "flex" : "hidden"}`}>
         {categories.map(cat => (
           <button
             key={cat}
