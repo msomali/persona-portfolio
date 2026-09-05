@@ -141,6 +141,59 @@ const projects: Project[] = [
     deployment: "Docker with locked dependencies — CI installs from the lockfile, so the image that ships is the one that was tested.",
     caseStudySlug: "central-authorization-service",
   },
+  {
+    title: "OpenClaw AI Software Company",
+    category: "AI Systems",
+    problem:
+      "Agents can write code. That was never the question. The question is what has to be true before a company lets them ship it — who signs, what they may touch, what happens when one goes wrong, and how any of that is proven afterwards rather than asserted.",
+    architecture:
+      "An operating manual in three volumes — the organizational contract, the AI operating system, and organizational intelligence — implemented as a repository where delivery is one task, one branch, one pull request. Governance decisions live as architecture decision records; approvals live as committed gate artifacts.",
+    decisions: [
+      "Containment before capability. Egress allowlists, token placement rules, and a rehearsed kill-switch drill were completed and evidenced before agents were given real work — a kill switch nobody has pulled in practice is a hope, not a control.",
+      "Dual-control CODEOWNERS on any path where the human owner supplies input, so an agent cannot quietly edit the boundary of its own authority.",
+      "One bot identity rather than per-agent accounts, so every action attributes to a single reviewable actor and the audit trail stays legible.",
+      "Task-lane worktrees to keep concurrent agent work physically separated instead of relying on discipline to avoid collisions.",
+      "A model policy that separates probed from staged, so a newly available model cannot enter the delivery path before it has been evaluated.",
+    ],
+    tech: ["Agent Orchestration", "LLMOps", "Evals", "Governance", "Python", "Terraform", "GitHub Actions"],
+    scale:
+      "31K words of operating manual, 12 architecture decision records, and 260 recorded human approval gates across 198 commits. Its first delivery, PROJECT-001, is the ARF Care platform listed above.",
+    deployment: "GitHub-native delivery: branch protection, required checks, CODEOWNERS dual control, and gate artifacts committed alongside the work.",
+  },
+  {
+    title: "LOJE Case Platform — Records & Insurance",
+    category: "Platform Engineering",
+    problem:
+      "Two legacy ASP.NET WebForms applications — one tracking medical-records requests, one tracking health-insurance subrogation — had drifted into separate silos with separate logins, separate permissions, and no shared audit. Both needed rebuilding, and rebuilding them twice would have recreated the same divergence.",
+    architecture:
+      "One application, two modules on a shared stack. Records and Insurance share a Microsoft Entra login, the LOJE Hub access layer, and a common UI shell with a module switcher — while data, roles, analytics, audit trails, and page-access rules stay isolated per module. Records is the reference implementation; Insurance mirrors it with the domain nouns swapped.",
+    decisions: [
+      "Shared shell, isolated data. One login and one access layer, but a role in Records grants nothing in Insurance — the convenience of a single sign-in never becomes an accidental grant across two different regulated workflows.",
+      "Built Records as the reference implementation and mirrored it feature-for-feature, so the second module inherits the first's structure instead of reinventing a parallel one that drifts within a year.",
+      "Modelled the case lifecycle explicitly as named states with typed team slots, and drove who may fill each slot from the hub role rather than a local table.",
+      "Directory-backed providers and insurers with duplicate and typo detection at the point of entry, because the reporting layer is only as good as whether two spellings of one provider are one row.",
+    ],
+    tech: ["Python", "FastAPI", "PostgreSQL", "TypeScript", "React", "Microsoft Entra", "Docker"],
+    scale: "33K LOC — 19K Python, 14K TypeScript — across 307 files in 261 commits, replacing two legacy WebForms applications.",
+    deployment: "Dockerised backend and frontend behind the shared Entra login and the LOJE Hub authorization layer.",
+  },
+  {
+    title: "PI Law Redactor",
+    category: "AI Systems",
+    problem:
+      "Personal injury files are dense with protected information — names, addresses, policy numbers, medical record numbers — spread across scanned PDFs, Word documents, images, and DICOM medical imaging. Redacting by hand is slow, and redacting by regex is worse, because the failure mode is a document that looks clean and isn't.",
+    architecture:
+      "A Flask application over a detection engine that ensembles multiple signals — OCR adapters, medical named-entity recognition, custom entity rules, language detection, and context filtering — across format-specific processors for DOCX, images, and DICOM. A human-in-the-loop feedback path fine-tunes the OCR and NER models over time through SageMaker.",
+    decisions: [
+      "Ensembled detectors rather than trusting one. A single NER model has a characteristic blind spot; the cost of one missed identifier in a legal record is high enough to justify paying for redundancy.",
+      "Handled DICOM as a first-class format, because medical imaging carries patient identifiers in its metadata that a document-oriented pipeline never looks at.",
+      "Made corrections train the system. Reviewer fixes feed a dataset builder rather than being discarded, so the model improves on the firm's actual documents instead of staying at its generic baseline.",
+      "Kept a human in the loop by design. The pipeline narrows and proposes; it does not decide that a document is safe to release.",
+    ],
+    tech: ["Python", "Flask", "Medical NER", "OCR", "DICOM", "AWS SageMaker", "Ensemble Models"],
+    scale: "5.8K LOC across a detection engine of eleven specialised modules, spanning five document and image formats.",
+    deployment: "Runs locally against the document store, with model fine-tuning jobs dispatched to SageMaker.",
+  },
 ];
 
 const sectionIcons = {

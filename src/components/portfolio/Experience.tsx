@@ -35,6 +35,23 @@ const experiences = [
     ],
   },
   {
+    company: "OpenClaw AI Software Company",
+    short: "OpenClaw",
+    role: "Founder",
+    period: "Jul 2026 — Present",
+    location: "Los Angeles, CA · Independent",
+    summary:
+      "My own company, and an experiment in how software gets built: an agent-operated software firm where AI agents do the delivery work inside a governance system that decides what they may do unsupervised and where a human must sign. The interesting problem was never whether agents can write code — it was what has to be true before you let them.",
+    points: [
+      "Wrote the operating manual the company runs on — roughly 31,000 words across three volumes: the organizational contract (roles, decision rights, lifecycle, quality gates), the AI operating system (orchestration, memory, tool governance, evals, observability), and organizational intelligence (governed self-improvement).",
+      "Built delivery around one task, one branch, one pull request, with 260 recorded human approval gates. Agents move work forward; a person signs before anything crosses a boundary that matters.",
+      "Made the governance decisions explicit and reviewable as architecture decision records — single bot identity, dual-control CODEOWNERS on owner-input paths, task-lane worktrees, containment versus subscription, and a model policy separating what is probed from what is staged.",
+      "Treated containment as a precondition rather than a feature: egress allowlists, token placement rules, and a rehearsed kill-switch drill, all with committed evidence, before agents were given real work.",
+      "Delivered its first project through the system end to end — the ARF Care platform below was OpenClaw's PROJECT-001, built under these gates rather than around them.",
+    ],
+    stack: ["Agent Orchestration", "LLMOps", "Governance", "Evals", "GitHub Actions", "Python", "Terraform"],
+  },
+  {
     company: "Upendo Kwanza Inc.",
     short: "Upendo Kwanza",
     role: "Data Analyst",
