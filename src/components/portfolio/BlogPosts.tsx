@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { ExternalLink, Clock } from "lucide-react";
+import { ExternalLink, Clock, Package } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 const posts = [
@@ -33,6 +33,7 @@ const posts = [
     date: "May 2025",
     readTime: "3 min read",
     url: "https://medium.com/@msomali/introducing-shimmer-progress-bar-a-customizable-animated-progress-indicator-for-flutter-9dddb4046a9b",
+    package: { label: "shimmer_progress_bar on pub.dev", href: "https://pub.dev/packages/shimmer_progress_bar" },
     tags: ["Flutter/Dart", "Mobile Development", "Open Source", "Custom Components"],
   },
   {
@@ -81,6 +82,18 @@ export default function BlogPosts() {
                 </span>
               ))}
             </div>
+            {post.package && (
+              <span
+                role="link"
+                tabIndex={0}
+                onClick={(e) => { e.preventDefault(); e.stopPropagation(); window.open(post.package!.href, "_blank", "noopener,noreferrer"); }}
+                onKeyDown={(e) => { if (e.key === "Enter") { e.preventDefault(); e.stopPropagation(); window.open(post.package!.href, "_blank", "noopener,noreferrer"); } }}
+                className="inline-flex items-center gap-1.5 mt-4 py-1 font-mono text-[11px] text-primary hover:underline underline-offset-4 cursor-pointer"
+              >
+                <Package size={12} />
+                {post.package.label}
+              </span>
+            )}
           </motion.a>
         ))}
       </div>

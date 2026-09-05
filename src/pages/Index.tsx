@@ -9,7 +9,6 @@ import Projects from "@/components/portfolio/Projects";
 import CaseStudies from "@/components/portfolio/CaseStudies";
 import Publications from "@/components/portfolio/Publications";
 import BlogPosts from "@/components/portfolio/BlogPosts";
-import GitHubRepos from "@/components/portfolio/GitHubRepos";
 import Beyond from "@/components/portfolio/Beyond";
 import Contact from "@/components/portfolio/Contact";
 import Footer from "@/components/portfolio/Footer";
@@ -36,7 +35,6 @@ const Index = () => {
         <Publications />
         <TechRadar />
         <BlogPosts />
-        <GitHubRepos />
         <Beyond />
         <Contact />
       </main>

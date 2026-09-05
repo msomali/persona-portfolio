@@ -71,7 +71,7 @@ export default function Beyond() {
 
   return (
     <section id="approach" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="09" title="How I Work" />
+      <SectionHeading number="08" title="How I Work" />
 
       <div className="flex flex-wrap gap-2 -mt-6 mb-4">
         {tabs.map((t) => (
