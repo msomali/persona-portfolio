@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { ExternalLink, Github, Target, Layers, Wrench, BarChart3, Rocket, TrendingUp, ArrowRight } from "lucide-react";
+import { ExternalLink, Github, Target, Layers, Wrench, BarChart3, Rocket, TrendingUp, ArrowRight, ChevronDown } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
 // Derived from the projects themselves so a tab can never render empty.
@@ -204,6 +204,114 @@ const sectionIcons = {
   Deployment: Rocket,
 };
 
+function ProjectCard({ p, index }: { p: Project; index: number }) {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <motion.article
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ delay: Math.min(index, 4) * 0.06 }}
+      className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/20 transition-all duration-300"
+    >
+      <div className="p-6 md:p-7 border-b border-border">
+        <div className="flex items-start justify-between gap-4">
+          <div className="min-w-0">
+            <span className="font-mono text-[11px] text-primary/60 uppercase tracking-wider">{p.category}</span>
+            <h3 className="text-lg md:text-xl font-bold text-foreground mt-1">{p.title}</h3>
+          </div>
+          <div className="flex gap-3 shrink-0">
+            {p.github && (
+              <a href={p.github} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} on GitHub`}
+                 className="text-muted-foreground hover:text-primary transition-colors">
+                <Github size={18} />
+              </a>
+            )}
+            {p.live && (
+              <a href={p.live} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} live site`}
+                 className="text-muted-foreground hover:text-primary transition-colors">
+                <ExternalLink size={18} />
+              </a>
+            )}
+          </div>
+        </div>
+      </div>
+
+      <div className="p-6 md:p-7 grid md:grid-cols-2 gap-6">
+        {([["Problem", p.problem], ["Architecture", p.architecture], ["Scale", p.scale], ["Deployment", p.deployment]] as const)
+          .map(([label, text]) => {
+            const Icon = sectionIcons[label];
+            return (
+              <div key={label}>
+                <div className="flex items-center gap-2 mb-2">
+                  <Icon size={14} className="text-primary" />
+                  <span className="text-xs font-mono text-primary uppercase tracking-wider">{label}</span>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
+              </div>
+            );
+          })}
+      </div>
+
+      <div className="px-6 md:px-7 pb-5">
+        <div className="flex flex-wrap gap-2">
+          {p.tech.map((t) => (
+            <span key={t} className="px-2.5 py-1 rounded-full text-[11px] font-mono bg-secondary text-secondary-foreground border border-border">
+              {t}
+            </span>
+          ))}
+        </div>
+      </div>
+
+      {p.decisions.length > 0 && (
+        <div className="px-6 md:px-7 pb-6">
+          <button
+            onClick={() => setOpen((v) => !v)}
+            aria-expanded={open}
+            className="group/t inline-flex items-center gap-2 font-mono text-xs text-primary hover:underline underline-offset-4"
+          >
+            <TrendingUp size={13} />
+            {open ? "Hide" : "Show"} the {p.decisions.length} decisions that mattered
+            <ChevronDown size={13} className={`transition-transform ${open ? "rotate-180" : ""}`} />
+          </button>
+
+          <AnimatePresence initial={false}>
+            {open && (
+              <motion.ul
+                initial={{ height: 0, opacity: 0 }}
+                animate={{ height: "auto", opacity: 1 }}
+                exit={{ height: 0, opacity: 0 }}
+                transition={{ duration: 0.25 }}
+                className="overflow-hidden space-y-2.5 mt-4"
+              >
+                {p.decisions.map((d, j) => (
+                  <li key={j} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
+                    <span className="text-primary mt-1.5 shrink-0">▹</span>
+                    {d}
+                  </li>
+                ))}
+              </motion.ul>
+            )}
+          </AnimatePresence>
+        </div>
+      )}
+
+      {p.caseStudySlug && (
+        <div className="px-6 md:px-7 pb-6">
+          <Link
+            to={`/case-studies/${p.caseStudySlug}`}
+            className="group/cs inline-flex items-center gap-1.5 font-mono text-xs text-primary hover:underline underline-offset-4"
+          >
+            Read the full case study — decisions, tradeoffs, and what I'd change
+            <ArrowRight size={13} className="group-hover/cs:translate-x-1 transition-transform" />
+          </Link>
+        </div>
+      )}
+    </motion.article>
+  );
+}
+
 export default function Projects() {
   const [filter, setFilter] = useState<string>("All");
 
@@ -213,133 +321,40 @@ export default function Projects() {
     ...[...new Set(projects.map((p) => p.category))].filter((c) => !categoryOrder.includes(c)),
   ];
 
-  const filtered = filter === "All" ? projects : projects.filter(p => p.category === filter);
+  const filtered = filter === "All" ? projects : projects.filter((p) => p.category === filter);
 
   return (
     <section id="projects" className="section-padding max-w-5xl mx-auto">
       <SectionHeading number="03" title="Things I've Built" />
 
-      {/* Filter tabs */}
-      <div className={`flex-wrap gap-2 mb-12 ${categories.length > 2 ? "flex" : "hidden"}`}>
-        {categories.map(cat => (
-          <button
-            key={cat}
-            onClick={() => setFilter(cat)}
-            className={`px-4 py-2 rounded-full text-xs font-mono border transition-all duration-200 ${
-              filter === cat
-                ? "bg-primary text-primary-foreground border-primary"
-                : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
-            }`}
-          >
-            {cat}
-          </button>
-        ))}
+      <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl -mt-6 mb-8">
+        {projects.length} systems, from a one-person tool to a multi-tenant platform. Each card opens with the
+        problem and the shape of the solution — the reasoning is one click down, so you can skim or go deep.
+      </p>
+
+      <div className={`flex-wrap gap-2 mb-10 ${categories.length > 2 ? "flex" : "hidden"}`}>
+        {categories.map((cat) => {
+          const n = cat === "All" ? projects.length : projects.filter((p) => p.category === cat).length;
+          return (
+            <button
+              key={cat}
+              onClick={() => setFilter(cat)}
+              className={`px-4 py-2 rounded-full text-xs font-mono border transition-all duration-200 ${
+                filter === cat
+                  ? "bg-primary text-primary-foreground border-primary"
+                  : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
+              }`}
+            >
+              {cat} <span className="opacity-60">{n}</span>
+            </button>
+          );
+        })}
       </div>
 
-      {/* Case-study projects */}
       <AnimatePresence mode="wait">
-        <motion.div
-          key={filter}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="space-y-16"
-        >
+        <motion.div key={filter} initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="space-y-6">
           {filtered.map((p, i) => (
-            <motion.article
-              key={p.title}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="bg-card border border-border rounded-xl overflow-hidden hover:border-primary/20 transition-all duration-300"
-            >
-              {/* Header */}
-              <div className="p-6 md:p-8 border-b border-border">
-                <div className="flex items-start justify-between gap-4">
-                  <div>
-                    <span className="font-mono text-[11px] text-primary/60 uppercase tracking-wider">{p.category}</span>
-                    <h3 className="text-xl md:text-2xl font-bold text-foreground mt-1">{p.title}</h3>
-                  </div>
-                  <div className="flex gap-3 shrink-0">
-                    {p.github && (
-                      <a href={p.github} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} on GitHub`} className="text-muted-foreground hover:text-primary transition-colors">
-                        <Github size={18} />
-                      </a>
-                    )}
-                    {p.live && (
-                      <a href={p.live} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} live site`} className="text-muted-foreground hover:text-primary transition-colors">
-                        <ExternalLink size={18} />
-                      </a>
-                    )}
-                  </div>
-                </div>
-              </div>
-
-              {/* Body */}
-              <div className="p-6 md:p-8 grid md:grid-cols-2 gap-6">
-                {([
-                  ["Problem", p.problem],
-                  ["Architecture", p.architecture],
-                  ["Scale", p.scale],
-                  ["Deployment", p.deployment],
-                ] as const).map(([label, text]) => {
-                  const Icon = sectionIcons[label];
-                  return (
-                    <div key={label}>
-                      <div className="flex items-center gap-2 mb-2">
-                        <Icon size={14} className="text-primary" />
-                        <span className="text-xs font-mono text-primary uppercase tracking-wider">{label}</span>
-                      </div>
-                      <p className="text-sm text-muted-foreground leading-relaxed">{text}</p>
-                    </div>
-                  );
-                })}
-              </div>
-
-              {p.caseStudySlug && (
-                <div className="px-6 md:px-8 pb-6">
-                  <Link
-                    to={`/case-studies/${p.caseStudySlug}`}
-                    className="group/cs inline-flex items-center gap-1.5 font-mono text-xs text-primary hover:underline underline-offset-4"
-                  >
-                    Read the full case study — decisions, tradeoffs, and what I'd change
-                    <ArrowRight size={13} className="group-hover/cs:translate-x-1 transition-transform" />
-                  </Link>
-                </div>
-              )}
-
-              {/* Key decisions */}
-              <div className={`px-6 md:px-8 pb-6 ${p.decisions.length ? "" : "hidden"}`}>
-                <div className="flex items-center gap-2 mb-3">
-                  <TrendingUp size={14} className="text-primary" />
-                  <span className="text-xs font-mono text-primary uppercase tracking-wider">Decisions That Mattered</span>
-                </div>
-                <ul className="space-y-2.5">
-                  {p.decisions.map((d, j) => (
-                    <li key={j} className="flex gap-3 text-sm text-muted-foreground leading-relaxed">
-                      <span className="text-primary mt-1.5 shrink-0">▹</span>
-                      {d}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              {/* Tech footer */}
-              <div className="px-6 md:px-8 pb-6 md:pb-8">
-                <div className="flex items-center gap-2 mb-2">
-                  <Wrench size={14} className="text-primary" />
-                  <span className="text-xs font-mono text-primary uppercase tracking-wider">Tech Stack</span>
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {p.tech.map(t => (
-                    <span key={t} className="px-3 py-1 rounded-full text-xs font-mono bg-secondary text-secondary-foreground border border-border">
-                      {t}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </motion.article>
+            <ProjectCard key={p.title} p={p} index={i} />
           ))}
         </motion.div>
       </AnimatePresence>
