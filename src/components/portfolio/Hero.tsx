@@ -128,7 +128,7 @@ export default function Hero() {
                 href={href}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-muted-foreground hover:text-primary transition-colors hover:-translate-y-0.5 transform duration-200"
+                className="p-2.5 -m-2.5 text-muted-foreground hover:text-primary transition-colors hover:-translate-y-0.5 transform duration-200"
               >
                 <Icon size={20} />
               </a>

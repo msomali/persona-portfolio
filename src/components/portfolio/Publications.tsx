@@ -104,7 +104,7 @@ export default function Publications() {
                   href={w.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center gap-1.5 mt-5 font-mono text-xs text-primary hover:underline underline-offset-4"
+                  className="inline-flex items-center gap-1.5 mt-5 py-2 -my-0.5 font-mono text-xs text-primary hover:underline underline-offset-4"
                 >
                   {w.linkLabel}
                   <ExternalLink size={13} />

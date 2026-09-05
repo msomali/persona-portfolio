@@ -13,7 +13,7 @@ export default function Footer() {
       {/* Social icons for mobile */}
       <div className="flex justify-center gap-5 mb-6 md:hidden">
         {socials.map(({ icon: Icon, href }) => (
-          <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary transition-colors">
+          <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="p-2.5 -m-1 text-muted-foreground hover:text-primary transition-colors">
             <Icon size={18} />
           </a>
         ))}
@@ -22,7 +22,7 @@ export default function Footer() {
       {/* Fixed side elements for desktop */}
       <div className="hidden md:flex flex-col items-center gap-3 fixed bottom-0 left-10">
         {socials.map(({ icon: Icon, href }) => (
-          <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-muted-foreground hover:text-primary hover:-translate-y-0.5 transition-all">
+          <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="p-2 -m-1 text-muted-foreground hover:text-primary hover:-translate-y-0.5 transition-all">
             <Icon size={18} />
           </a>
         ))}

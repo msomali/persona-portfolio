@@ -32,7 +32,7 @@ export default function Navbar() {
         }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="font-mono text-primary font-bold text-lg tracking-tight">
+        <a href="#" className="font-mono text-primary font-bold text-lg tracking-tight py-2 -my-2">
           {"<waka  />"}
         </a>
 
@@ -66,7 +66,7 @@ export default function Navbar() {
         {/* Mobile Toggle */}
         <button
           onClick={() => setMobileOpen(!mobileOpen)}
-          className="md:hidden text-foreground z-50"
+          className="md:hidden p-2.5 -m-2.5 text-foreground z-50"
         >
           {mobileOpen ? <X size={24} /> : <Menu size={24} />}
         </button>

@@ -205,13 +205,13 @@ function ProjectCard({ p, index }: { p: Project; index: number }) {
           <div className="flex gap-3 shrink-0">
             {p.github && (
               <a href={p.github} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} on GitHub`}
-                 className="text-muted-foreground hover:text-primary transition-colors">
+                 className="p-2 -m-2 text-muted-foreground hover:text-primary transition-colors">
                 <Github size={18} />
               </a>
             )}
             {p.live && (
               <a href={p.live} target="_blank" rel="noopener noreferrer" aria-label={`${p.title} live site`}
-                 className="text-muted-foreground hover:text-primary transition-colors">
+                 className="p-2 -m-2 text-muted-foreground hover:text-primary transition-colors">
                 <ExternalLink size={18} />
               </a>
             )}

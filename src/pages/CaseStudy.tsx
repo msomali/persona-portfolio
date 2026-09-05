@@ -28,12 +28,12 @@ export default function CaseStudy() {
         <div className="max-w-3xl mx-auto flex items-center justify-between px-6 py-4">
           <Link
             to="/#case-studies"
-            className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 py-2 -my-2 font-mono text-xs text-muted-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft size={14} />
             All case studies
           </Link>
-          <Link to="/" className="font-mono text-primary font-bold text-base tracking-tight">
+          <Link to="/" className="font-mono text-primary font-bold text-base tracking-tight py-2 -my-2">
             {"<waka />"}
           </Link>
         </div>
@@ -109,7 +109,7 @@ export default function CaseStudy() {
         <nav className="mt-16 pt-8 border-t border-border flex flex-col sm:flex-row gap-4 sm:items-center sm:justify-between">
           <Link
             to="/#case-studies"
-            className="inline-flex items-center gap-2 font-mono text-xs text-muted-foreground hover:text-primary transition-colors"
+            className="inline-flex items-center gap-2 py-2 -my-2 font-mono text-xs text-muted-foreground hover:text-primary transition-colors"
           >
             <ArrowLeft size={14} />
             Back to all case studies
@@ -117,7 +117,7 @@ export default function CaseStudy() {
           {next && next.slug !== cs.slug && (
             <Link
               to={`/case-studies/${next.slug}`}
-              className="group inline-flex items-center gap-2 font-mono text-xs text-primary hover:underline underline-offset-4 text-right"
+              className="group inline-flex items-center gap-2 py-2 -my-2 font-mono text-xs text-primary hover:underline underline-offset-4 text-right"
             >
               Next: {next.title.split(/[—:?]/)[0].trim()}
               <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform shrink-0" />

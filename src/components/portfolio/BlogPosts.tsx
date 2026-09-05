@@ -74,7 +74,7 @@ export default function BlogPosts() {
               {post.title}
             </h4>
             <p className="text-sm text-muted-foreground leading-relaxed mb-4">{post.excerpt}</p>
-            <div className="flex gap-2">
+            <div className="flex flex-wrap gap-2">
               {post.tags.map((t) => (
                 <span key={t} className="px-2 py-1 rounded text-xs font-mono bg-secondary text-primary/70">
                   {t}
