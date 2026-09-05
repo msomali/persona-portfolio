@@ -24,30 +24,66 @@ export default function Hero() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
-          className="text-3xl sm:text-4xl md:text-6xl font-bold text-foreground leading-tight"
+          className="text-3xl sm:text-4xl md:text-[3.4rem] font-bold text-foreground leading-[1.08]"
         >
-          I build intelligent, scalable systems —{" "}
-          <span className="text-gradient">from raw data to production-ready applications.</span>
+          I build the data platforms a business runs on —{" "}
+          <span className="text-gradient">and the AI that sits on top of them.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
+          transition={{ delay: 0.42 }}
           className="mt-6 text-muted-foreground max-w-2xl text-base md:text-lg leading-relaxed"
         >
-          I design and ship end-to-end systems that transform data into reliable, performant,
-          and impactful software. Bridging{" "}
-          <span className="text-foreground font-medium">Software Engineering</span>,{" "}
-          <span className="text-foreground font-medium">Data Engineering</span>, and{" "}
-          <span className="text-foreground font-medium">Data Science</span>.
+          Ten years shipping production systems, the last three in data. I've been the{" "}
+          <span className="text-foreground font-medium">first data hire at two organizations</span> and
+          built both platforms from an empty cloud account — ingestion and orchestration through to the
+          models and dashboards on top.
         </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.55 }}
-          className="mt-7 flex items-start gap-2.5 font-mono text-xs sm:text-sm text-muted-foreground"
+          transition={{ delay: 0.48 }}
+          className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-3 max-w-2xl"
+        >
+          {[
+            ["10 yrs", "engineering"],
+            ["2", "platforms from zero"],
+            ["5M+", "citizens served"],
+            ["4.0", "M.Sc. Data Science"],
+          ].map(([n, l]) => (
+            <div key={l} className="border-l-2 border-primary/40 pl-3">
+              <p className="text-xl md:text-2xl font-bold text-foreground leading-none">{n}</p>
+              <p className="font-mono text-[10px] uppercase tracking-wider text-muted-foreground mt-1.5 leading-snug">
+                {l}
+              </p>
+            </div>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.52 }}
+          className="mt-7 flex flex-wrap gap-2 max-w-3xl"
+        >
+          {["PySpark", "Dagster", "dbt", "Kafka", "FastAPI", "PostgreSQL", "PyTorch", "RAG / LLMs", "AWS", "Docker"].map((t) => (
+            <span
+              key={t}
+              className="font-mono text-[11px] px-2.5 py-1 rounded border border-primary/20 bg-primary/5 text-primary/90"
+            >
+              {t}
+            </span>
+          ))}
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.58 }}
+          className="mt-8 flex items-start gap-2.5 font-mono text-xs sm:text-sm text-muted-foreground"
         >
           <span className="relative flex h-2 w-2 mt-1.5 shrink-0">
             <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
