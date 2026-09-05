@@ -1,99 +1,62 @@
 import { motion } from "framer-motion";
-import { BookOpen, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
+import { ArrowRight, Layers } from "lucide-react";
 import SectionHeading from "./SectionHeading";
-
-const caseStudies = [
-  {
-    title: "Migrating a Monolith to Event-Driven Architecture",
-    summary: "How we decomposed a 500K LOC Python monolith into 12 event-driven microservices serving 50M daily requests — without downtime.",
-    decisions: [
-      "Chose Kafka over RabbitMQ for exactly-once semantics at scale",
-      "Implemented the Strangler Fig pattern for incremental migration",
-      "Built a custom service mesh for cross-service observability",
-    ],
-    tradeoffs: "Accepted eventual consistency in non-critical paths to achieve 10x throughput improvement. Traded deployment simplicity for horizontal scalability.",
-    performance: "Latency P99 dropped from 2.1s to 180ms. Infrastructure cost reduced by 35% through right-sizing.",
-    lesson: "Start migration from the edges — services with fewest dependencies. Build comprehensive integration tests before touching a single line of production code.",
-  },
-  {
-    title: "Building a Real-Time Feature Store for ML",
-    summary: "Designed a low-latency feature store serving 200+ ML models with sub-10ms retrieval — bridging offline training and online inference.",
-    decisions: [
-      "Dual-storage: Redis for online, Parquet on S3 for offline training",
-      "Point-in-time correctness to prevent data leakage in features",
-      "Feature versioning with automated drift detection",
-    ],
-    tradeoffs: "Chose Redis Cluster over DynamoDB for lower tail latency despite higher ops overhead. Accepted storage duplication for read performance.",
-    performance: "Feature retrieval P95: 4ms (down from 200ms). Reduced model training data prep from 6 hours to 20 minutes.",
-    lesson: "Feature stores are only as good as their data contracts. Invest heavily in schema validation and backward compatibility from day one.",
-  },
-  {
-    title: "Scaling a Data Pipeline from 100K to 5M Events/sec",
-    summary: "Evolved a simple Airflow-based ETL into a distributed streaming platform processing 5M events/second with sub-second latency.",
-    decisions: [
-      "Moved from batch to streaming with Kafka Streams for critical paths",
-      "Implemented custom partitioning based on tenant isolation requirements",
-      "Built backpressure mechanisms to handle traffic spikes gracefully",
-    ],
-    tradeoffs: "Maintained batch pipelines for historical reprocessing alongside streaming for real-time — dual architecture with higher complexity but greater resilience.",
-    performance: "End-to-end latency: 800ms (from 4 hours batch). Zero data loss during 3x traffic spike events.",
-    lesson: "Don't stream everything. Identify which data paths genuinely need real-time processing and keep batch for the rest. Hybrid architectures win.",
-  },
-];
+import { caseStudies } from "@/data/caseStudies";
 
 export default function CaseStudies() {
   return (
     <section id="case-studies" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="05" title="Case Studies" />
+      <SectionHeading number="06" title="Case Studies" />
 
-      <div className="space-y-8">
+      <p className="text-sm text-muted-foreground leading-relaxed max-w-3xl -mt-6 mb-10">
+        Systems where the code isn't public, so the reasoning has to stand on its own — what the constraint was,
+        what I chose, and what I gave up to get it.
+      </p>
+
+      <div className="grid md:grid-cols-2 gap-5">
         {caseStudies.map((cs, i) => (
-          <motion.article
-            key={cs.title}
-            initial={{ opacity: 0, y: 30 }}
+          <motion.div
+            key={cs.slug}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ delay: i * 0.1 }}
-            className="bg-card border border-border rounded-xl p-6 md:p-8 hover:border-primary/20 transition-all duration-300"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ delay: i * 0.08 }}
+            className={i === 0 ? "md:col-span-2" : ""}
           >
-            <div className="flex items-start gap-3 mb-4">
-              <BookOpen className="text-primary shrink-0 mt-1" size={20} />
-              <div>
-                <h3 className="text-lg font-bold text-foreground">{cs.title}</h3>
-                <p className="text-sm text-muted-foreground mt-1 leading-relaxed">{cs.summary}</p>
-              </div>
-            </div>
+            <Link
+              to={`/case-studies/${cs.slug}`}
+              className="group flex flex-col h-full bg-card border border-border rounded-xl p-6 md:p-7 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300"
+            >
+              <p className="font-mono text-[11px] uppercase tracking-wider text-primary/70 mb-2">{cs.context}</p>
+              <h3 className="text-base md:text-lg font-bold text-foreground leading-snug group-hover:text-primary transition-colors">
+                {cs.title}
+              </h3>
+              <p className="text-sm text-muted-foreground mt-3 leading-relaxed flex-1">{cs.summary}</p>
 
-            <div className="grid md:grid-cols-2 gap-6 mt-6">
-              <div>
-                <h4 className="text-xs font-mono text-primary uppercase tracking-wider mb-3">Key Architectural Decisions</h4>
-                <ul className="space-y-2">
-                  {cs.decisions.map((d, j) => (
-                    <li key={j} className="flex gap-2 text-sm text-muted-foreground leading-relaxed">
-                      <ArrowRight size={14} className="text-primary shrink-0 mt-1" />
-                      {d}
-                    </li>
-                  ))}
-                </ul>
+              <div className="flex flex-wrap items-center gap-2 mt-5">
+                <Layers size={13} className="text-primary/60 mr-0.5" />
+                {cs.stack.slice(0, 5).map((t) => (
+                  <span
+                    key={t}
+                    className="font-mono text-[11px] px-2 py-1 rounded border border-primary/20 bg-primary/5 text-primary/90"
+                  >
+                    {t}
+                  </span>
+                ))}
+                {cs.stack.length > 5 && (
+                  <span className="font-mono text-[11px] text-muted-foreground/60">
+                    +{cs.stack.length - 5} more
+                  </span>
+                )}
               </div>
 
-              <div className="space-y-4">
-                <div>
-                  <h4 className="text-xs font-mono text-primary uppercase tracking-wider mb-2">Tradeoffs</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{cs.tradeoffs}</p>
-                </div>
-                <div>
-                  <h4 className="text-xs font-mono text-primary uppercase tracking-wider mb-2">Performance</h4>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{cs.performance}</p>
-                </div>
-              </div>
-            </div>
-
-            <div className="mt-6 pt-4 border-t border-border">
-              <h4 className="text-xs font-mono text-primary uppercase tracking-wider mb-2">Lesson Learned</h4>
-              <p className="text-sm text-foreground/80 leading-relaxed italic">{cs.lesson}</p>
-            </div>
-          </motion.article>
+              <span className="inline-flex items-center gap-1.5 mt-5 font-mono text-xs text-primary">
+                Read the case study
+                <ArrowRight size={13} className="group-hover:translate-x-1 transition-transform" />
+              </span>
+            </Link>
+          </motion.div>
         ))}
       </div>
     </section>

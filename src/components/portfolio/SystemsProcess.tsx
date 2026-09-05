@@ -44,7 +44,7 @@ const steps = [
 export default function SystemsProcess() {
   return (
     <section id="systems" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="01" title="How I Build Systems" />
+      <SectionHeading number="02" title="How I Build Systems" />
 
       <div className="relative">
         {/* Connection line */}

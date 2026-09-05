@@ -8,7 +8,7 @@ export default function Contact() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
       >
-        <p className="font-mono text-primary text-sm mb-4">08. What's Next?</p>
+        <p className="font-mono text-primary text-sm mb-4">12. What's Next?</p>
         <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-5">Get In Touch</h2>
         <p className="text-muted-foreground leading-relaxed mb-10 max-w-lg mx-auto">
           I'm always open to new opportunities, interesting projects, and great conversations.

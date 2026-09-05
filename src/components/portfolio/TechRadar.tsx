@@ -31,7 +31,7 @@ const categories = [
 export default function TechRadar() {
   return (
     <section id="tech" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="02" title="Tech Stack Radar" />
+      <SectionHeading number="03" title="Tech Stack Radar" />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {categories.map((cat, i) => (

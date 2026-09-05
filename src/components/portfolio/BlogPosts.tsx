@@ -4,6 +4,14 @@ import SectionHeading from "./SectionHeading";
 
 const posts = [
   {
+    title: "Migrating a Manual Python Pipeline to dbt + Dagster Without Breaking Reports",
+    excerpt: "2,000 lines of pandas on a single Windows laptop, replaced layer by layer \u2014 while the reports it produced stayed byte-for-byte identical.",
+    date: "Mar 2026",
+    readTime: "11 min read",
+    url: "https://medium.com/@msomali/migrating-a-manual-python-pipeline-to-dbt-dagster-without-breaking-reports-8ec9ca5be0d8",
+    tags: ["Data Engineering", "dbt", "Dagster", "Migration"],
+  },
+  {
     title: "Building a Production Data Pipeline with dlt, dbt, and Dagster for Under $30/Month",
     excerpt: "A complete walkthrough of an end-to-end ELT pipeline — from four live APIs to a styled Excel report, deployed on AWS ECS Fargate.",
     date: "Feb 2026",
@@ -13,7 +21,7 @@ const posts = [
   },
   {
     title: "Building Your First ETL Pipeline: A Beginner’s Guide to Extracting, Transforming, and Loading Real-World Data",
-    excerpt: "Building Your First ETL Pipeline: A Beginner’s Guide to Extracting, Transforming, and Loading Real-World Data",
+    excerpt: "Extract, transform, load \u2014 built from scratch against a live API, with the schema decisions and the beginner mistakes left in.",
     date: "Nov 2025",
     readTime: "7 min read",
     url: "https://medium.com/@msomali/building-your-first-etl-pipeline-a-beginners-guide-to-extracting-transforming-and-loading-a49bb19a0058",
@@ -72,7 +80,7 @@ const posts = [
 export default function BlogPosts() {
   return (
     <section id="blog" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="06" title="Technical Deep Dives" />
+      <SectionHeading number="08" title="Technical Deep Dives" />
 
       <div className="grid md:grid-cols-2 gap-5">
         {posts.map((post, i) => (

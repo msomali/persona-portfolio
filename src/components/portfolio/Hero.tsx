@@ -17,7 +17,7 @@ export default function Hero() {
           transition={{ delay: 0.2 }}
           className="font-mono text-primary mb-5 text-sm md:text-base"
         >
-          Hi, my name is Walid Kambagha
+          Walid Kambagha &middot; Senior Data &amp; AI Engineer &middot; Los Angeles, CA
         </motion.p>
 
         <motion.h1
@@ -46,14 +46,32 @@ export default function Hero() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6 }}
-          className="mt-10 flex flex-wrap items-center gap-4"
+          transition={{ delay: 0.55 }}
+          className="mt-7 flex items-start gap-2.5 font-mono text-xs sm:text-sm text-muted-foreground"
+        >
+          <span className="relative flex h-2 w-2 mt-1.5 shrink-0">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-60" />
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-primary" />
+          </span>
+          <span>
+            <span className="text-foreground">Open to new roles</span> &mdash; remote, hybrid, or on-site.
+            <span className="block sm:inline sm:ml-1 text-muted-foreground/70">
+              CA &middot; WA &middot; TX &middot; CO &middot; NY &middot; NJ &middot; MA &middot; IL &middot; FL &middot; GA
+            </span>
+          </span>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.65 }}
+          className="mt-9 flex flex-wrap items-center gap-4"
         >
           <a
-            href="#projects"
+            href="#experience"
             className="inline-flex items-center gap-2 px-6 py-3 bg-primary text-primary-foreground rounded font-mono text-sm font-medium hover:bg-primary/90 transition-colors"
           >
-            View Projects
+            View My Work
             <ArrowDown size={16} />
           </a>
           <a

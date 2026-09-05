@@ -3,18 +3,18 @@ import { Camera, Mountain, Gamepad2, BookOpen, Music, Coffee, Medal, CookingPot 
 import SectionHeading from "./SectionHeading";
 
 const hobbies = [
-  { icon: Mountain, title: "Hiking & Trekking", desc: "Summited 15+ peaks across the Rockies and Alps" },
-  { icon: Camera, title: "Photography", desc: "Landscape and astrophotography — featured on Unsplash" },
-  { icon: Gamepad2, title: "Game Dev", desc: "Building indie games with Godot and Unity on weekends" },
-  { icon: BookOpen, title: "Reading", desc: "50+ books/year — sci-fi, systems thinking, philosophy" },
-  { icon: Medal, title: "Football Player", desc: "Competitive amateur football player in local leagues" },
-  { icon: CookingPot, title: "Specialty Chef", desc: "Home chef — swahili, african, and indian flavors" },
+  { icon: Mountain, title: "Hiking & Trekking", desc: "Trails and elevation. The best debugging I do happens nowhere near a screen." },
+  { icon: Medal, title: "Football", desc: "Competitive amateur leagues — still convinced I'm quicker than I actually am." },
+  { icon: CookingPot, title: "Cooking", desc: "Swahili, East African, and Indian flavours. The food I grew up on, made properly." },
+  { icon: Gamepad2, title: "Game Dev", desc: "Weekend builds in Godot and Unity — systems design with an immediate feedback loop." },
+  { icon: Camera, title: "Photography", desc: "Landscape and astrophotography. Long exposures are mostly an exercise in patience." },
+  { icon: BookOpen, title: "Reading", desc: "Science fiction, systems thinking, and philosophy, in roughly that order." },
 ];
 
 export default function Hobbies() {
   return (
     <section id="hobbies" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="07" title="Beyond Code" />
+      <SectionHeading number="10" title="Beyond Code" />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {hobbies.map((h, i) => (

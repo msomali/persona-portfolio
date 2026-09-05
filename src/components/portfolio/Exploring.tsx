@@ -13,7 +13,7 @@ const topics = [
 export default function Exploring() {
   return (
     <section id="exploring" className="section-padding max-w-5xl mx-auto">
-      <SectionHeading number="09" title="What I'm Currently Exploring" />
+      <SectionHeading number="11" title="What I'm Currently Exploring" />
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
         {topics.map((t, i) => (

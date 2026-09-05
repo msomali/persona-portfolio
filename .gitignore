@@ -22,3 +22,8 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Source material handed over for content work — personal PDFs, thesis under
+# embargo, third-party recommendations. Everything under public/ is deployed
+# publicly, so these must never be committed.
+public/assets/
