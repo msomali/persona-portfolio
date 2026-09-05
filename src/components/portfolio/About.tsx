@@ -13,11 +13,12 @@ export default function About() {
     <section id="about" className="section-padding max-w-5xl mx-auto">
       <SectionHeading number="01" title="About Me" />
 
+      <div className="flex flex-col-reverse md:flex-row md:items-start gap-8 md:gap-10">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="space-y-4 text-muted-foreground leading-relaxed max-w-3xl"
+        className="space-y-4 text-muted-foreground leading-relaxed flex-1 min-w-0"
       >
         <p>
           I'm a Senior Data &amp; AI Engineer in Los Angeles. I've been the{" "}
@@ -49,6 +50,27 @@ export default function About() {
           unglamorous data quality work that decides whether anyone trusts the output at all.
         </p>
       </motion.div>
+
+      <motion.div
+        initial={{ opacity: 0, scale: 0.96 }}
+        whileInView={{ opacity: 1, scale: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="shrink-0 mx-auto md:mx-0"
+      >
+        <div className="relative w-40 h-40 md:w-52 md:h-52">
+          <div className="absolute inset-0 rounded-xl border border-primary/40 translate-x-3 translate-y-3" />
+          <img
+            src="/walid.jpg"
+            alt="Walid Kambagha"
+            width={640}
+            height={640}
+            loading="lazy"
+            className="relative w-full h-full object-cover rounded-xl border border-border grayscale hover:grayscale-0 transition-all duration-500"
+          />
+        </div>
+      </motion.div>
+      </div>
 
       <motion.div
         initial={{ opacity: 0, y: 20 }}

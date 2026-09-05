@@ -3,7 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ExternalLink, Github, Target, Layers, Wrench, BarChart3, Rocket, TrendingUp } from "lucide-react";
 import SectionHeading from "./SectionHeading";
 
-const categories = ["All", "AI Systems", "Data Engineering", "Machine Learning"] as const;
+const categories = ["All", "AI Systems", "Platform Engineering", "Data Engineering"] as const;
 
 interface Project {
   title: string;
@@ -41,6 +41,45 @@ const projects: Project[] = [
     deployment:
       "Docker Compose across seven services: Postgres, Redis, MinIO, Alembic migrator, FastAPI API, background worker, and the Vite frontend. Rate limiting, tenant isolation, and circuit breakers sit in middleware.",
     github: "https://github.com/msomali/job-application-assistant",
+  },
+  {
+    title: "ARF Care Management System",
+    category: "Platform Engineering",
+    problem:
+      "Adult residential care facilities operate under Title 17, which means a medication pass, an incident note, and a shift handoff are all regulated records. Caregivers work from tablets in buildings where the wifi drops, and four different audiences \u2014 owners, lead staff, outside consultants, auditors, and families \u2014 each need a different slice of the same record with hard walls between organizations.",
+    architecture:
+      "An event-sourced FastAPI backend behind three separate frontends: an offline-first tablet PWA for caregivers, an admin web app for owners and auditors, and a family portal. Multi-tenancy is enforced in the database with Postgres row-level security, with the API connecting on a restricted role rather than as owner.",
+    decisions: [
+      "Event-sourced the record rather than storing current state. A regulated care log needs to answer 'what did the chart say at 4pm on the 12th', and a mutable row cannot answer that \u2014 the append-only history is the compliance artifact.",
+      "Built the caregiver app offline-first. A medication pass cannot wait for the network to come back, so the tablet writes locally and reconciles later; connectivity is treated as unreliable by default rather than as an error case.",
+      "Enforced tenant isolation with Postgres RLS on a restricted database role instead of filtering in application code. An application bug then leaks nothing \u2014 the boundary holds one layer below the mistake.",
+      "Tested the isolation rather than assuming it: a two-organization isolation spec runs in CI against a real Alembic-migrated stack on the restricted role, not a mocked one.",
+    ],
+    tech: [
+      "Python", "FastAPI", "SQLAlchemy", "PostgreSQL RLS", "Alembic", "MinIO",
+      "React", "TypeScript", "PWA", "Playwright", "Docker",
+    ],
+    scale:
+      "73K LOC \u2014 31K Python, 42K TypeScript \u2014 across one backend and three frontends, delivered in seven phases. 129 backend unit and integration tests run in CI; the ten browser-driven Playwright specs run locally only, since they need all three frontends served at once.",
+    deployment:
+      "Docker Compose for Postgres and MinIO, GitHub Actions running unit, integration, and the two-org isolation E2E against a migrated stack.",
+  },
+  {
+    title: "doc-sense",
+    category: "AI Systems",
+    problem:
+      "Incoming mail arrives as scanned PDF bundles \u2014 dozens of unrelated documents fused into one file, separated only by physical markers a person recognizes on sight. Every page passes through a human who splits, identifies, names, and files it before anyone can act on any of it.",
+    architecture:
+      "A FastAPI service with Postgres for state and Redis for queue and pub/sub, driving an Arq worker through split \u2192 OCR \u2192 classify \u2192 group \u2192 persist over a shared filesystem. The whole pipeline runs on-premises.",
+    decisions: [
+      "On-premises by requirement, not preference. The documents are client mail, so no cloud OCR endpoint and no third-party document service \u2014 the constraint shaped every tool choice downstream.",
+      "Detects handwritten separators alongside printed ones, because in real mail the divider is as often a marker pen as a printed sheet, and a classifier trained only on clean print fails on exactly the bundles that matter.",
+      "The pipeline proposes groupings rather than committing them. A wrong split silently misfiles a legal document, so the machine narrows the work and a person confirms it.",
+      "Long OCR runs go through a Redis-backed worker queue rather than the request path, so a fifty-page bundle never holds a connection open.",
+    ],
+    tech: ["Python", "FastAPI", "PostgreSQL", "Redis", "Arq", "OCR", "Docker"],
+    scale: "4.6K LOC across 40 commits \u2014 a focused tool rather than a platform, built to remove one specific manual step.",
+    deployment: "Docker Compose across four services \u2014 Postgres, Redis, API, and worker \u2014 bootstrapped with a generated session secret.",
   },
 ];
 
