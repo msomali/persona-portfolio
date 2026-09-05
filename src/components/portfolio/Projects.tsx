@@ -142,25 +142,6 @@ const projects: Project[] = [
     caseStudySlug: "central-authorization-service",
   },
   {
-    title: "OpenClaw AI Software Company",
-    category: "AI Systems",
-    problem:
-      "Agents can write code. That was never the question. The question is what has to be true before a company lets them ship it — who signs, what they may touch, what happens when one goes wrong, and how any of that is proven afterwards rather than asserted.",
-    architecture:
-      "An operating manual in three volumes — the organizational contract, the AI operating system, and organizational intelligence — implemented as a repository where delivery is one task, one branch, one pull request. Governance decisions live as architecture decision records; approvals live as committed gate artifacts.",
-    decisions: [
-      "Containment before capability. Egress allowlists, token placement rules, and a rehearsed kill-switch drill were completed and evidenced before agents were given real work — a kill switch nobody has pulled in practice is a hope, not a control.",
-      "Dual-control CODEOWNERS on any path where the human owner supplies input, so an agent cannot quietly edit the boundary of its own authority.",
-      "One bot identity rather than per-agent accounts, so every action attributes to a single reviewable actor and the audit trail stays legible.",
-      "Task-lane worktrees to keep concurrent agent work physically separated instead of relying on discipline to avoid collisions.",
-      "A model policy that separates probed from staged, so a newly available model cannot enter the delivery path before it has been evaluated.",
-    ],
-    tech: ["Agent Orchestration", "LLMOps", "Evals", "Governance", "Python", "Terraform", "GitHub Actions"],
-    scale:
-      "31K words of operating manual, 12 architecture decision records, and 260 recorded human approval gates across 198 commits. Its first delivery, PROJECT-001, is the ARF Care platform listed above.",
-    deployment: "GitHub-native delivery: branch protection, required checks, CODEOWNERS dual control, and gate artifacts committed alongside the work.",
-  },
-  {
     title: "LOJE Case Platform — Records & Insurance",
     category: "Platform Engineering",
     problem:
